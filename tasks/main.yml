@@ -1,20 +1,16 @@
 ---
-
-- name: Include OS-specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
-
 - name: Define nut_packages.
-  set_fact:
+  ansible.builtin.set_fact:
     nut_packages: "{{ __nut_packages | list }}"
   when: nut_packages is not defined
 
 - name: Ensure NUT packages are installed.
-  package:
+  ansible.builtin.package:
     name: "{{ nut_packages }}"
     state: present
 
 - name: Install NUT configuration files.
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/etc/nut/{{ item }}"
     owner: root
@@ -26,14 +22,14 @@
     - upsd.users
     - upsd.conf
     - upsmon.conf
-  notify: restart nut
+  notify: Restart nut
   when: nut_managed_config
 
 - name: Install custom notifycmd script.
-  copy:
+  ansible.builtin.copy:
     dest: "{{ nut_upsmon_notifycmd }}"
     content: "{{ nut_upsmon_notifycmd_content }}"
     owner: root
     group: nut
     mode: 0770
-  when: nut_upsmon_notifycmd_content is defined
+  when: nut_upsmon_notifycmd_content | length > 0

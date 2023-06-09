@@ -1,12 +1,11 @@
 ---
 galaxy_info:
-  author: Nicola Fontana
-  namespace: ntd
+  author: simoncaron
   role_name: nut
   description: Network UPS Tools (nut) for Debian.
-  company: eNTiDi software
+  issue_tracker_url: https://github.com/simoncaron/ansible-role-nut/issues
   license: MIT
-  min_ansible_version: 2.5
+  min_ansible_version: "2.5"
   platforms:
     - name: Debian
       versions:

@@ -8,4 +8,12 @@ MONITOR {{ ups.name }}@{{ nut_host }} {{ nut_powervalue }} {{ nut_user }} {{ nut
 NOTIFYCMD {{ nut_upsmon_notifycmd }}
 {% endif %}
 
+{% for notif in nut_upsmon_notify %}
+NOTIFYMSG {{ notif.name }}    "{{ notif.msg }}"
+{% endfor %}
+
+{% for notif in nut_upsmon_notify %}
+NOTIFYFLAG {{ notif.name }}    "{{ notif.flag }}"
+{% endfor %}
+
 {{ nut_upsmon_extra }}

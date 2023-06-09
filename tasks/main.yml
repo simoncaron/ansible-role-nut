@@ -1,4 +1,7 @@
 ---
+- name: Include OS-specific variables.
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+
 - name: Define nut_packages.
   ansible.builtin.set_fact:
     nut_packages: "{{ __nut_packages | list }}"
@@ -18,12 +21,24 @@
     mode: 0640
   with_items:
     - nut.conf
+    - upsmon.conf
+    - upssched.conf
+  notify: Restart nut
+  when: nut_managed_config
+
+- name: Install NUT configuration files.
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/etc/nut/{{ item }}"
+    owner: root
+    group: nut
+    mode: 0640
+  with_items:
     - ups.conf
     - upsd.users
     - upsd.conf
-    - upsmon.conf
   notify: Restart nut
-  when: nut_managed_config
+  when: nut_managed_config and 'nut-server' in nut_packages
 
 - name: Install custom notifycmd script.
   ansible.builtin.copy:
@@ -33,3 +48,22 @@
     group: nut
     mode: 0770
   when: nut_upsmon_notifycmd_content | length > 0
+
+- name: Install custom upssched-cmd script.
+  ansible.builtin.copy:
+    dest: "{{ nut_upssched_cmdscript }}"
+    content: "{{ nut_upssched_cmdscript_content }}"
+    owner: root
+    group: nut
+    mode: 0770
+  when: nut_upssched_cmdscript_content | length > 0
+
+- name: Create upssched folders
+  ansible.builtin.file:
+    path: "{{ item | dirname }}"
+    owner: root
+    group: nut
+    mode: '0770'
+  with_items:
+    - "{{ nut_upssched_pipefn }}"
+    - "{{ nut_upssched_lockfn }}"

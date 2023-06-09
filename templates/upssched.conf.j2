@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+
+CMDSCRIPT {{ nut_upssched_cmdscript }}
+
+{% if nut_upssched_pipefn | length > 0 %}
+PIPEFN {{ nut_upssched_pipefn }}
+{% endif %}
+
+{% if nut_upssched_lockfn | length > 0 %}
+LOCKFN {{ nut_upssched_lockfn }}
+{% endif %}
+
+{% for at in nut_upssched_at_commands %}
+AT {{ at.notifytype }} {{ at.upsname }} {{ at.command }}
+{% endfor %}

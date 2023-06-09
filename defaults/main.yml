@@ -31,6 +31,19 @@ nut_ups: []
 #    extra: |
 #      sdtype = 2
 
+nut_upssched_cmdscript: "/bin/upssched-cmd"
+
+nut_upssched_cmdscript_content: ""
+
+nut_upssched_pipefn: "/run/nut/upssched/upssched.pipe"
+
+nut_upssched_lockfn: "/run/nut/upssched/upssched.lock"
+
+nut_upssched_at_commands: []
+#  - notifytype: ONBATT
+#    upsname: *
+#    command: START-TIMER commbad 30
+
 # These ..._extra options are directly appended to the relevant files,
 # so any additional configuration could be defined here
 nut_ups_extra: []
@@ -38,6 +51,8 @@ nut_ups_extra: []
 nut_upsd_extra: []
 
 nut_upsmon_extra: []
+
+nut_upsmon_notify: []
 
 # When set, NOTIFYCMD will be configured to this path
 nut_upsmon_notifycmd: ""

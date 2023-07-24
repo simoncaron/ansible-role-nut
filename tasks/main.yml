@@ -64,6 +64,7 @@
     owner: root
     group: nut
     mode: '0770'
+    recurse: true
   with_items:
     - "{{ nut_upssched_pipefn }}"
     - "{{ nut_upssched_lockfn }}"

@@ -21,7 +21,7 @@ nut_powervalue: "1"
 nut_services:
   - nut-driver
   - nut-monitor
-  - nut-server
+  - nut-driver-enumerator
 
 nut_ups: []
 #  - name: UPS

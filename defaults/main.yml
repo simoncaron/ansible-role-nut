@@ -19,9 +19,9 @@ nut_role: master
 nut_powervalue: "1"
 
 nut_services:
-  - nut-driver
-  - nut-monitor
   - nut-driver-enumerator
+  - nut-monitor
+  - nut-server
 
 nut_ups: []
 #  - name: UPS

@@ -1,3 +1,4 @@
 # {{ ansible_managed }}
-
+{% if (nut_upsd_extra is defined) and nut_upsd_extra %}
 {{ nut_upsd_extra }}
+{% endif %}

@@ -1,6 +1,8 @@
 # {{ ansible_managed }}
 
+{% if (nut_ups_extra is defined) and nut_ups_extra %}
 {{ nut_ups_extra }}
+{% endif %}
 
 {% for ups in nut_ups %}
 [{{ ups.name }}]

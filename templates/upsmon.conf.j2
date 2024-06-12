@@ -16,4 +16,6 @@ NOTIFYMSG {{ notif.name }}    "{{ notif.msg }}"
 NOTIFYFLAG {{ notif.name }}    "{{ notif.flag }}"
 {% endfor %}
 
+{% if (nut_upsmon_extra is defined) and nut_upsmon_extra %}
 {{ nut_upsmon_extra }}
+{% endif %}

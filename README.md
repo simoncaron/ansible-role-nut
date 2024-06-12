@@ -1,6 +1,7 @@
 Ansible Role: NUT
 =================
-[![Build Status](https://travis-ci.org/ntd/ansible-role-nut.svg?branch=master)](https://travis-ci.org/ntd/ansible-role-nut)
+[![Build Status](https://github.com/simoncaron/ansible-role-nut/workflows/Release/badge.svg)](https://github.com/simoncaron/ansible-role-nut/actions?query=workflow%3Release)
+[![Ansible Galaxy Downloads](https://img.shields.io/badge/dynamic/json?color=blueviolet&label=Galaxy%20Downloads&query=%24.download_count&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2F32010%2F%3Fformat%3Djson)](https://galaxy.ansible.com/ui/standalone/roles/simoncaron/nut/)
 
 Installs and configures [NUT](http://networkupstools.org/) (Nework UPS
 tools) on Debian based systems.

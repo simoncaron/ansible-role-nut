@@ -46,13 +46,19 @@ nut_upssched_at_commands: []
 
 # These ..._extra options are directly appended to the relevant files,
 # so any additional configuration could be defined here
-nut_ups_extra: []
+nut_ups_extra: ""
 
-nut_upsd_extra: []
+nut_upsd_extra: ""
 
-nut_upsmon_extra: []
+nut_upsmon_extra: ""
 
 nut_upsmon_notify: []
+#  - name: ONLINE
+#    msg: UPS %s on line power
+#    flag: SYSLOG+WALL+EXEC
+#  - name: ONBATT
+#    msg: UPS %s on battery
+#    flag: SYSLOG+WALL+EXEC
 
 # When set, NOTIFYCMD will be configured to this path
 nut_upsmon_notifycmd: ""
